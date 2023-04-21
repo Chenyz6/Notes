@@ -57,6 +57,103 @@ shift + 8 （*）
 
 ![image-20230410160159367](Linux系统编程笔记.assets/image-20230410160159367.png)
 
+
+
+### cat tac命令
+
+只输入cat  用来回显   （你输入什么，它输出什么）
+
+tac   反过来输出显示
+
+
+
+### 大文本查看命令 more less head tail
+
+![image-20230421175416578](Linux系统编程笔记.assets/image-20230421175416578.png)
+
+
+
+### stat命令
+
+文件/文件系统的详细信息显示
+
+![image-20230421205212129](Linux系统编程笔记.assets/image-20230421205212129.png)
+
+
+
+
+
+
+
+### 用户用户组
+
+
+
+
+#### whoami
+
+查看当前用户
+
+
+
+#### chmod
+
+![image-20230421183529530](Linux系统编程笔记.assets/image-20230421183529530.png)
+
+![image-20230421183548438](Linux系统编程笔记.assets/image-20230421183548438.png)
+
+
+
+#### chown
+
+![image-20230421184753438](Linux系统编程笔记.assets/image-20230421184753438.png)
+
+
+
+#### chgrp
+
+![image-20230421185131764](Linux系统编程笔记.assets/image-20230421185131764.png)
+
+
+
+#### 直接修改用户和用户组
+
+![image-20230421185358708](Linux系统编程笔记.assets/image-20230421185358708.png)
+
+
+
+### find命令   -- 找文件
+
+![image-20230421203417295](Linux系统编程笔记.assets/image-20230421203417295.png)
+
+![image-20230421213123462](Linux系统编程笔记.assets/image-20230421213123462.png)
+
+![image-20230421213628320](Linux系统编程笔记.assets/image-20230421213628320.png)
+
+![image-20230421210712221](Linux系统编程笔记.assets/image-20230421210712221.png)
+
+![image-20230421210431428](Linux系统编程笔记.assets/image-20230421210431428.png)
+
+![image-20230421204327747](Linux系统编程笔记.assets/image-20230421204327747.png)
+
+![image-20230421204612953](Linux系统编程笔记.assets/image-20230421204612953.png)
+
+
+
+### grep命令   -- 找文件内容
+
+
+
+
+
+
+
+## 包管理工具  Centos  yum
+
+![image-20230421181444060](Linux系统编程笔记.assets/image-20230421181444060.png)
+
+
+
 ## Linux系统文件类型
 
 普通文件：-
@@ -141,6 +238,24 @@ gcc -shared **-o** libmylib.so add.o
 **环境变量 是进程的概念**
 
 ![image-20230410154750795](Linux系统编程笔记.assets/image-20230410154750795.png)
+
+
+
+
+
+## 软连接和硬链接
+
+![image-20230421181850284](Linux系统编程笔记.assets/image-20230421181850284.png)
+
+软连接在创建的时候  尽量使用绝对路径  便于移植
+
+![image-20230421183118773](Linux系统编程笔记.assets/image-20230421183118773.png)
+
+
+
+
+
+
 
 
 
