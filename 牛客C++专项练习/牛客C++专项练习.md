@@ -1168,11 +1168,33 @@ MFC 中 CString 是类型安全的类
 
 
 
+## C++17 vector      ------（） {} 区分
+
+链接：https://www.nowcoder.com/questionTerminal/65e8edcb3cce4911b374500246d91d97?#jsEditorModuleBody
+来源：牛客网
+
+![image-20230429180214072](牛客C++专项练习.assets/image-20230429180214072.png)
+
+![image-20230429180155082](牛客C++专项练习.assets/image-20230429180155082.png)
+
+对于本题目，我认为考察得是对于()和{}的区分，vector本质上还是数组，
+
+{}所框起来的是数据内容，是可以赋值给vector的，想想数组的初始化是不是经常采用这种方式呢
+
+()则是对于数据的结构进行限定，这是vector特有的。所以()是不能对vector来进行赋值的。
+
+![image-20230429180435097](牛客C++专项练习.assets/image-20230429180435097.png)
 
 
 
+## 类对象的创建
 
+![image-20230429180837361](牛客C++专项练习.assets/image-20230429180837361.png)
 
+链接：https://www.nowcoder.com/questionTerminal/7f4edb9f75134da4b1958613d1b93bd1?#jsEditorModuleBody
+来源：牛客网
+
+程序运行结果为DDDDD说明调用了5次析构函数，所以需要创建5个对象，D* p=new D[2]创建了两个对象D，那么对象数据 D d[]需要创建3个对象D因此排除 选项C，选项的D的初始化方式错误、A、B是对象数组的两种初始化方式，正确
 
 
 
