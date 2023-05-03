@@ -1,0 +1,5 @@
+线程概述：
+https://subingwen.cn/linux/thread/
+
+线程同步：
+https://subingwen.cn/linux/thread-sync/
