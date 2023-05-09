@@ -1639,8 +1639,6 @@ int main() {
 
 崩溃的原因：同一块堆的区域  被释放了两次
 
-![image-20220926172623274](C:\Users\陈与泽\AppData\Roaming\Typora\typora-user-images\image-20220926172623274.png)
-
 ![image-20220927162429341](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220927162429341.png)
 
 
