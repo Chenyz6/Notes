@@ -1606,3 +1606,27 @@ Linux多进程编程中的可以使用fork函数来创建子进程。fork函数�
 - 各自的进程ID和父进程ID不同
 - 子进程的未决告警被清除；
 - 子进程的未决信号集设置为空集。
+
+
+
+
+
+## g++ 和 gcc
+
+   首先说明：gcc 和 GCC 是两个不同的东西   
+
+  
+
+   GCC:GNU Compiler Collection(GUN 编译器集合)，它可以编译C、C++、JAV、Fortran、Pascal、Object-C、Ada等语言。   
+
+  
+
+   gcc是GCC中的GUN C Compiler（C 编译器）   
+
+  
+
+   g++是GCC中的GUN C++ Compiler（C++编译器）
+
+
+
+***g++编译.c和.cpp都按照.cpp来搞，      gcc对于c和cpp不一样***
