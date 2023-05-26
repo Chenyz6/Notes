@@ -1824,5 +1824,15 @@ enum
 
 
 
+## map
+
+map是红黑树,中序遍历有序;
+
+unordered_map是哈希表,属于无序存储
 
 
+
+map和multimap**区别**：
+
+- map不允许容器中有重复key值元素
+- multimap允许容器中有重复key值元素
