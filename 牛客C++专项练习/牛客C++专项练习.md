@@ -1836,3 +1836,9 @@ map和multimap**区别**：
 
 - map不允许容器中有重复key值元素
 - multimap允许容器中有重复key值元素
+
+
+
+## void * 为无类型指针
+
+![image-20230528094358074](牛客C++专项练习.assets/image-20230528094358074.png)
