@@ -1928,6 +1928,40 @@ const_cast这个转换好理解，可以将常量转成非常量。
 
 
 
+## 大根堆 小根堆
+
+`#include <functional>`
+
+`// 默认大根堆`
+`priority_queue<int>; // 实际上等价于` 
+`priority_queue<int, vector<int>, less<int>>;`
+`// 小根堆`
+`priority_queue<int, vector<int>, greater<int>> q;`
+
+
+
+![image-20230604141452395](牛客C++专项练习.assets/image-20230604141452395.png)
+
+
+
+## Linux--fork（）
+
+fork调用的一个奇妙之处就是它仅仅被调用一次，却能够返回两次，它可能有三种不同的返回值：
+
+1. 在父进程中，fork返回新创建子进程的进程ID；
+2. 在子进程中，fork返回0；
+3. 如果出现错误，fork返回一个负值；
+
+![image-20230604163326720](牛客C++专项练习.assets/image-20230604163326720.png)
+
+
+
+
+
+
+
+
+
 
 
 
