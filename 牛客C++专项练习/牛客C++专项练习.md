@@ -1911,3 +1911,26 @@ https://blog.csdn.net/W_H_M_2018/article/details/111120624
 
 
 
+## cast
+
+**C++中强制类型转换操作符有static_cast、dynamic_cast、const_cast、reinterpert_cast四个**
+
+```
+dynamic_cast<new_type>(expression)要求new_type一定要是多态类型的类（存在虚函数），否则编译不通过，dynamic_cast可以检测上下行转换，当发现是下行转换时，得到null（将基类指针转换为子类是不安全的），但如果new_type是void*类型时，dynamic_cast认为总是安全的。
+```
+
+```
+dynamic_cast将一个基类对象指针（或引用）cast到继承类指针，dynamic_cast会根据基类指针是否真正指向继承类指针来做相应处理， 即会作一定的判断。 对指针进行dynamic_cast，失败返回null，成功返回正常cast后的对象指针； 对引用进行dynamic_cast，失败抛出一个异常，成功返回正常cast后的对象引用。 
+reinterpret_cast这个转换是最“不安全”的，两个没有任何关系的类指针之间转换都可以用这个转换实现。
+static_cast静态转换是最接近于C风格转换，很多时候都需要程序员自身去判断转换是否安全。
+const_cast这个转换好理解，可以将常量转成非常量。
+```
+
+
+
+
+
+
+
+
+
