@@ -4,4 +4,4 @@
 
 `git pull origin master`
 
-注：其中origin master表示git的主分支。
+注：master为分支名
