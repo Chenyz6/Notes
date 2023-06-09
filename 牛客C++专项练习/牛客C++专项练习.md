@@ -2033,6 +2033,25 @@ struct Msg
 
 
 
+## vector迭代器失效
+
+[(1条消息) 面试题：vector迭代器什么时候会失效？_vector的迭代器什么时候会失效?_clw_18的博客-CSDN博客](https://blog.csdn.net/weixin_49199646/article/details/109264858)
+
+**resize、reserve、insert、assign、push_back全部迭代器失效**
+
+一、 push_back导致迭代器失效
+
+vector在push_back的时候当容量不足时会触发扩容，导致整个vector重新申请内存，并且将原有的数据复制到新的内存中，并将原有内存释放，这自然是会导致迭代器失效的，因为迭代器所指的内存都已经被释放。
+
+二、insert导致迭代器失效
+insert导致的迭代器失效有两种情况：
+（1）插入操作导致vector扩容，迭代器失效原因和push_back相同
+（2）插入操作引起vector内元素移动，导致被移动部分的迭代器失效
+
+三、vector的删除操作只会导致指向被删除元素及后面的迭代器失效
+
+
+
 
 
 
