@@ -30,7 +30,7 @@ void catch_child(int signo)
 int main(int argc, char *argv[])
 {
     pid_t pid;
-//阻塞
+//阻塞     防止下面还没注册完捕捉  就死了
     int i; 
     for (i = 0; i < 15; i++)
         if ((pid = fork()) == 0)                // 创建多个子进程
