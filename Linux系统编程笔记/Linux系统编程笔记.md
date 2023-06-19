@@ -34,6 +34,10 @@
 
 ![image-20230415134355603](Linux系统编程笔记.assets/image-20230415134355603.png)
 
+![image-20230619142954778](Linux系统编程笔记.assets/image-20230619142954778.png)
+
+
+
 #### 查看Man Page    --->    shift + k （K）
 
 #### ![image-20230415135438590](Linux系统编程笔记.assets/image-20230415135438590.png) 
