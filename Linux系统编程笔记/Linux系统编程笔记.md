@@ -160,6 +160,38 @@ ps ajx    查看父进程ID，进程ID，进程组ID，会话ID的方法：ps aj
 
 
 
+### **sudo apt update**
+
+列出所有可更新的软件清单命令
+
+
+
+### **sudo apt upgrade**
+
+升级软件包
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 包管理工具  Centos  yum
 
 ![image-20230421181444060](Linux系统编程笔记.assets/image-20230421181444060.png)

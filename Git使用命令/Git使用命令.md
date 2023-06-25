@@ -77,3 +77,62 @@ git commit -m "first push"
 ```text
 git push origin main
 ```
+
+
+
+
+
+
+
+
+
+## Ubuntu git 配置
+
+sudo apt update																			列出所有可更新的软件清单命令
+
+sudo apt upgrade						  												升级软件包
+
+sudo apt install git     																	安装git
+
+git config --global user.name "ze-ubuntu"								设置名称
+
+git config --global user.email "1079903036@qq.com"			设置邮箱
+
+git config --global --list																  查看配置信息
+
+ssh-keygen -t rsa -C "1079903036@qq.com							 生成SSH秘钥
+
+cd ~/.ssh																						  进入到ssh目录
+
+vim id_rsa.pub																			   复制公钥内容
+
+ssh -T git@git.oschina.net															测试是否可以连通
+
+出现Permission denied (publickey)											表示测试成功
+
+git clone git@github.com:Chenyz6/Ubuntu_Code.git			 看在哪个用户生成的SSH密钥，再决定是否加sudo
+
+git status  																					   查看当前状态
+
+git add .  																						 把内容全部添加到本地git缓存区中
+
+git commit -m "提交内容介绍"  													推送修改到本地git库中
+
+git push origin main																	  提交到远程仓库
+
+git pull origin main																	    从远程仓库拉取
+
+![image-20230625194130545](Git使用命令.assets/image-20230625194130545.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
