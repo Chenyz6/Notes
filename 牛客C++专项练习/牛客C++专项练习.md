@@ -2051,23 +2051,23 @@ insert导致的迭代器失效有两种情况：
 
 ## const修饰
 
-  const默认修饰左边的内容，如果左边没有东西则修饰其右边的内容 
+  const**默认修饰左边**的内容，如果**左边没有东西则修饰其右边的内容** 
 
  
 
-  const int *a  const左边没有东西，因此const修饰int，则指针指向的内容不可通过指针修改 
+  const int *a  	const左边没有东西，因此const修饰int，则指针指向的内容不可通过指针修改 
 
  
 
-  int const *a  const左边有东西，因此const修饰int 
+  int const *a  	const左边有东西，因此const修饰int 
 
  
 
-  int* const a  const修饰*，即指针不能改变指向 
+  int* const a  	const修饰*，即指针不能改变指向 
 
  
 
-  const int * const a 第一个const修饰int，第二个const修饰*，即指针指向内容不可修改，也不能改变指针指向 
+  const int * const a 	第一个const修饰int，第二个const修饰*，即指针指向内容不可修改，也不能改变指针指向 
 
  
 
