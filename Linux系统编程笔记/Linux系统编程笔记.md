@@ -34,6 +34,19 @@
 
 ![image-20230415134355603](Linux系统编程笔记.assets/image-20230415134355603.png)
 
+  1 set ts=4
+  2 set sw=4
+  3 imap ( ()<ESC>i        "设置（自动补全
+  4 imap [ []<ESC>i
+  5 imap { {}<ESC>i
+  6 imap < <><ESC>i
+  7 imap ' ''<ESC>i
+  8 imap " ""<ESC>i
+  9 set nu 						"设置显示行号
+ 10 set ruler				    "设置标尺
+ 11 set ai						 "设置文本高亮
+ 12 set autoindent		"设置自动缩进（与上一行的缩进相同）
+
 ![image-20230619142954778](Linux系统编程笔记.assets/image-20230619142954778.png)
 
 
