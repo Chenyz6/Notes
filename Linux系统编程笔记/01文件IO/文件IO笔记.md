@@ -4,6 +4,18 @@
 
 内核：操作系统核心程序
 
+## 库函数和系统调用
+
+![image-20230724142904046](文件IO笔记.assets/image-20230724142904046.png)
+
+![image-20230724143049473](文件IO笔记.assets/image-20230724143049473.png)
+
+## umask
+
+![image-20230724150257157](文件IO笔记.assets/image-20230724150257157.png)
+
+![image-20230724150512887](文件IO笔记.assets/image-20230724150512887.png)
+
 ## open函数：
 
 	int open(char *pathname, int flags)	#include <unistd.h>
@@ -14,6 +26,8 @@
 		flags：文件打开方式：	#include <fcntl.h>
 	
 			O_RDONLY|O_WRONLY|O_RDWR	O_CREAT|O_APPEND|O_TRUNC|O_EXCL|O_NONBLOCK ....
+			
+	O_TRUNC 把文件截断成0，把文件清0
 	
 	返回值：
 		成功： 打开文件所得到对应的 文件描述符（整数）
@@ -74,7 +88,13 @@
 	
 		-1： 并且 errno = EAGIN 或 EWOULDBLOCK, 说明不是read失败，而是read在以非阻塞方式读一个设备文件（网络文件），并且文件无数据。
 
+![image-20230724164629688](文件IO笔记.assets/image-20230724164629688.png)
+
 ## write函数：
+
+![image-20230724153247478](文件IO笔记.assets/image-20230724153247478.png)
+
+![image-20230724153307898](文件IO笔记.assets/image-20230724153307898.png)
 
 	ssize_t write(int fd, const void *buf, size_t count);
 	
@@ -90,6 +110,60 @@
 		成功；	写入的字节数。
 	
 		失败：	-1， 设置 errno
+
+## perror所用头文件（自动翻译error）
+
+![image-20230724154429120](文件IO笔记.assets/image-20230724154429120.png)
+
+perror()          #include<stdio.h>
+
+exit()				#include <stdlib.h>
+
+strerror(errno)        errno -- 全局变量 #include <errno.h>
+
+## fgetc()
+
+![image-20230724155820092](文件IO笔记.assets/image-20230724155820092.png)
+
+
+
+
+
+## fputc()
+
+![image-20230724155955148](文件IO笔记.assets/image-20230724155955148.png)
+
+
+
+
+
+## fgets()
+
+![image-20230724155841667](文件IO笔记.assets/image-20230724155841667.png)
+
+
+
+
+
+## fputs()
+
+![image-20230724160021617](文件IO笔记.assets/image-20230724160021617.png)
+
+
+
+
+
+## strace  查看系统调用
+
+
+
+## 缓冲区fputs（）
+
+![img](文件IO笔记.assets/clip_image002.png)
+
+**用户空间  进入  内核空间 ----------消耗时间大**
+
+
 
 ## 文件描述符：
 
@@ -113,7 +187,17 @@
 	
 	open("/dev/tty", O_RDWR|O_NONBLOCK)	--- 设置 /dev/tty 非阻塞状态。(默认为阻塞状态)
 
-## fcntl：int (int fd, int cmd, ...)
+
+
+**read   返回-1      并且errno = EAGAIN  表示     文件设置了非阻塞但是没有数据**
+
+**read返回 -1： 并且 errno = EAGIN 或 EWOULDBLOCK, 说明不是read失败，而是read在以非阻塞方式读一个设备文件（网络文件），并且文件无数据。**
+
+
+
+
+
+## fcntl：int (int fd, int cmd, ...) 
 
 	int flgs = fcntl(fd,  F_GETFL);
 	
@@ -124,6 +208,12 @@
 	获取文件状态： F_GETFL
 	
 	设置文件状态： F_SETFL
+
+![fcntl设置文件属性](文件IO笔记.assets/fcntl设置文件属性.png)
+
+**flags   --   位图**
+
+
 
 ## lseek函数：
 
