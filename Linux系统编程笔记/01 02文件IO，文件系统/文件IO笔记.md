@@ -275,9 +275,9 @@
 	
 	截断文件长度成指定长度。常用来拓展文件大小，代替lseek。
 	
-	​    int truncate(const char *path, off_t length);   成功：0；失败：-1设置errno为相应值
+	​    **int truncate(const char *path, off_t length);   成功：0；失败：-1设置errno为相应值**
 	
-	​    int ftruncate(int fd, off_t length);
+	​    **int ftruncate(int fd, off_t length);**
 	
 	![image-20230725105641107](文件IO笔记.assets/image-20230725105641107.png)
 	
