@@ -1,6 +1,6 @@
-# Git
+## Git
 
-## 安装最新版Git
+### 安装最新版Git
 
 sudo add-apt-repository ppa:git-core/ppa 
 
@@ -12,7 +12,7 @@ sudo apt install git
 
 
 
-## Git 配置
+### Git 配置
 
 sudo apt update																			列出所有可更新的软件清单命令
 
@@ -50,7 +50,7 @@ git pull origin main																	    从远程仓库拉取
 
 ![image-20230625194130545](Linux配置.assets/image-20230625194130545.png)
 
-## Git回退上个版本
+### Git回退上个版本
 
 git reset --hard								
 
@@ -62,7 +62,7 @@ git reset --hard
 
 
 
-#  Lazygit 配置
+##  Lazygit 配置
 
 ```
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -81,7 +81,7 @@ sudo install lazygit /usr/local/bin
 
 
 
-# Zsh配置
+## Zsh配置
 
 **第一步 → 把 oh-my-zsh 项目 Clone 下来：**
 
@@ -161,7 +161,7 @@ background:	#293031
 
 
 
-# PowerVim 配置
+## PowerVim 配置
 
 GitHub链接：[youngyangyang04/PowerVim: Make your vim more power and much easer. (github.com)](https://github.com/youngyangyang04/PowerVim)
 
@@ -214,3 +214,54 @@ zh_CN GB2312
 
 
 
+## SSH配置
+
+sudo apt update											更新数据源
+
+sudo apt install openssh-server -y				安装ssh
+
+sudo systemctl status ssh 							查看状态
+
+sudo ufw allow ssh										如果你的防火墙开启了，使用下面语句
+
+vim /etc/ssh/sshd_config							   查看端口号
+
+ifconfig 														  查看IP
+
+
+
+## c++编译器安装
+
+sudo apt-get install build-essential -y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 问题
+
+## Ubuntu安装完Qt打不开
+
+[ubuntu 安装qt后打不开_ubuntu安装qt后打不开_SzyuSxxm的博客-CSDN博客](https://blog.csdn.net/suzy419/article/details/116301562)
+
+
+
+sudo apt-get install libxcb-xinerama0     // 装这个就好了
+
+
+
+## QT 缺少 GL/gl.h
+
+![image-20230913140933438](Linux配置.assets/image-20230913140933438.png)
+
+sudo apt install mesa-common-dev
