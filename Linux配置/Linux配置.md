@@ -236,13 +236,152 @@ sudo apt-get install build-essential -y
 
 
 
+## QtCreator 所有版本官方下载地址
+
+1.所有版本QT下载地址 ：
+
+[Index of /archive/qt](https://link.zhihu.com/?target=http%3A//download.qt.io/archive/qt/)
+
+\2. 所有Qt Creator下载地址：
+
+[Index of /archive/qtcreator](https://link.zhihu.com/?target=http%3A//download.qt.io/archive/qtcreator/)
+
+\3. 所有Qt VS开发插件下载地址:
+
+[Index of /archive/vsaddin](https://link.zhihu.com/?target=http%3A//download.qt.io/archive/vsaddin/)
+
+4.Qt官网镜像下载地址： 　
+
+[Index of /](https://link.zhihu.com/?target=http%3A//download.qt.io/)
 
 
 
+## Linux 编译arm版本的qt程序
+
+**注意：Ubuntu16**
+
+[RK3399 ARM QT开发环境搭建_arm架构 qt-opensource-linux-arm64-5.9.0.run_风的呼吸7的博客-CSDN博客](https://blog.csdn.net/hl1796/article/details/90205218?spm=1001.2014.3001.5506)
+
+### 1.下载交叉工具编译链
+
+官网：
+
+[Builds & Downloads | Linaro](https://www.linaro.org/downloads/)
+
+具体下载网址：
+
+[Linaro Releases](https://releases.linaro.org/components/toolchain/binaries/7.5-2019.12/aarch64-linux-gnu/)
+
+下载这个   gcc-linaro-7.5.0-2019.12-x86_64_aarch64-linux-gnu.tar.xz
+
+### 2.安装交叉编译工具
+
+tar -xvf gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz 
+
+sudo gedit /etc/profile			    //  配置环境变量
+
+末尾添加       export PATH="/opt/gcc-aarch64-linux-gnu/bin:$PATH"  		  // 注意位置
+
+source  /etc/profile					  // 使环境变量生效
+
+aarch64-linux-gnu-gcc -v			// 验证是否成功
+
+### 3. 交叉编译qt源码
+
+下载qt源码注意qt下载版本（qt-everywhere-src-5.15.0.tar.xz）    
+
+网址：
+
+[Index of /archive/qt/5.15/5.15.0/single](https://download.qt.io/archive/qt/5.15/5.15.0/single/)
+
+将下载的qt-everywhere-opensource-src-5.15.0.tar.xz压缩包复制到/opt目录下，完成后在/opt目录下输入命令
+
+tar -xvf qt-everywhere-opensource-src-5.15.0.tar.xz
+
+cd   /opt/qt-everywhere-opensource-src-5.15.0		// 注意位置
+
+sudo gedit /opt/qt-everywhere-opensource-src-5.15.0/qtbase/mkspecs/linux-aarch64-gnu-g++/qmake.conf
+
+在其中添加如下内容
+
+QT_QPA_DEFAULT_PLATFORM = linuxfb
+QMAKE_CFLAGS_RELEASE += -O2 -march=armv8-a -lts
+QMAKE_CXXFLAGS_RELEASE += -O2 -march=armv8-a -lts
+
+![image-20230915123050919](Linux配置.assets/image-20230915123050919.png)
+
+sudo gedit auto.sh				// 自动配置脚本
+
+#!/bin/sh
+./configure \
+-prefix /opt/qt5.9.1-arm \             		// 位置改成要生成的目录
+-confirm-license \
+-opensource \
+-release \
+-make libs \
+-xplatform linux-aarch64-gnu-g++ \
+-pch \
+-qt-libjpeg \
+-qt-libpng \
+-qt-zlib \
+-no-opengl \
+-no-sse2 \
+-no-openssl \
+-no-cups \
+-no-glib \
+-no-dbus \
+-no-xcb \
+-no-separate-debug-info \
 
 
 
+sudo chmod u+x auto.sh 
 
+./auto.sh
+
+sudo make
+
+sudo make install
+
+### 4.安装qtcreator
+
+注意版本：qt-opensource-linux-x64-5.12.10.run
+
+sudo chmod u+x qt-opensource-linux-x64-5.9.0.run 
+
+./qt-opensource-linux-x64-5.9.0.run
+
+<img src="https://note.youdao.com/yws/api/personal/file/426B8FD3DBD84834A37FB969F295966E?method=download&shareKey=c078ea060b087316362a8fcd7f7f86be" alt="image" style="zoom: 67%;" />
+
+<img src="https://note.youdao.com/yws/api/personal/file/7CA76D9054074E63A6E19F4C43A746A6?method=download&shareKey=27cbdc83d8d8f3b4d67e616cc382d740" alt="image" style="zoom:67%;" />
+
+安装完qtcreator打开可能会没反应           sudo apt-get install libxcb-xinerama0     // 装这个就好了
+
+### 5.将交叉编译的Qt库复制到板子上
+
+将上面编译完源码的文件压缩
+
+到板子上解压
+
+tar -zxvf qt5.15.0.tar.gz
+
+sudo vi /etc/profile         // 注意修改路径
+
+export QTEDIR=/opt/qt5.9.0-arm/
+export LD_LIBRARY_PATH=/opt/qt5.9.0-arm/lib:$LD_LIBRARY_PATH
+export QT_QPA_PLATFORM_PLUGIN_PATH=$QTEDIR/plugins
+export QT_QPA_PLATFORM=linuxfb
+export QT_QPA_FONTDIR=/usr/share/fonts/truetype/droid
+
+source /etc/profile
+
+### 6.运行
+
+将linux用arm编译好的debug文件导入到板子上
+
+赋予权限 sudo chmod 777 -R（文件遍历用-R）
+
+运行  sudo ./XXXX
 
 
 
@@ -265,3 +404,18 @@ sudo apt-get install libxcb-xinerama0     // 装这个就好了
 ![image-20230913140933438](Linux配置.assets/image-20230913140933438.png)
 
 sudo apt install mesa-common-dev
+
+
+
+## rpm安装包依赖问题
+
+再安装#yum -y install expect 工具
+缓存你需要安装的rpm，但是不安装，使用yum主要是自动解决依赖关系，把相关的依赖包一网打尽。
+使用命令：
+mkdir -p /YOUR/DOWNLOAD/PATH
+yum install <package name> --downloadonly --downloaddir=/YOUR/DOWNLOAD/PATH
+将需要的rpm包下载到/tmp/yum中，复制到你的环境中，使用
+rpm -ivh *
+安装即可
+如果rpm -ivh *不行对的话，可以使用如下命令
+rpm -Uvh *.rpm --nodeps --force
