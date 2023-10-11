@@ -4233,7 +4233,7 @@ void test01()
 	//base = new Base; // 错误，抽象类无法实例化对象
 	base = new Son;
 	base->func();
-	delete base;//记得销毁
+	delete base; // 记得销毁
 }
 
 int main() {
