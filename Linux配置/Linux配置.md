@@ -385,6 +385,101 @@ source /etc/profile
 
 
 
+## QEMU
+
+https://blog.csdn.net/zjy666888/article/details/124914183
+
+https://blog.csdn.net/h1007886499/article/details/121110333
+
+### 1.工具准备
+
+以银河麒麟桌面操作系统V10 arm64为例:Kylin-Desktop-V10-Release-Build1-20200710-arm64.iso
+下载地址：
+系统镜像：
+https://www.it610.com/article/1297185834776207360.htm
+QEMU ：
+https://qemu.weilnetz.de/w64/2021/qemu-w64-setup-20210505.exe
+UEFI：
+http://releases.linaro.org/components/kernel/uefi-linaro/16.02/release/qemu64/QEMU_EFI.fd
+
+### 2.安装
+
+#### 1.安装QEMU
+
+双击qemu-w64-setup-20210505.exe，指定安装目录，例：D：\qemu
+安装好后，利用如下步骤qemu创建一个虚拟硬盘文件：
+在D:\qemu文件夹下，打开cmd命令行
+在命令行中键入：
+
+```
+qemu-img create -f qcow2 D:\Kylin\kylindisk.qcow2 40G （最好选择40G，20G不够分配磁盘）
+```
+
+此时，会在Kylin文件夹下产生一个kylindisk.qcow2文件。
+
+##### 或制作镜像
+
+分配稍微大一点  例如 50G
+
+```cpp
+qemu-img.exe create C:\qemu\kylinDesktop.img 10G
+```
+
+成功如下：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/91c91800e3394de6bdcc219a089b67f6.png)
+
+#### 2.安装虚拟机
+
+在D:\qemu文件夹下，打开cmd命令行
+在命令行中键入：
+
+```
+ qemu-system-aarch64.exe -m 4096 -cpu cortex-a72 -smp 8,sockets=4,cores=2 -M virt -bios D:\Kylin\QEMU_EFI.fd -device VGA -device nec-usb-xhci -device usb-mouse -device usb-kbd -drive if=none,file=D:\Kylin\kylindisk.qcow2,id=hd0 -device virtio-blk-device,drive=hd0 -drive if=none,file=D:\Kylin\Kylin-Desktop-V10-Release-Build1-20200710 arm64.iso,id=cdrom,media=cdrom -device virtio-scsi-device -device scsi-cd,drive=cdrom -net nic -net user,hostfwd=tcp::2222-:22
+```
+
+安装过程中，分区可以直接选择最下面的快速安装系统选项，点击安装系统按钮，即可安装，大概两个小时。
+
+#### 3.下次启动虚拟机
+
+如下次想要启动，直接进入到qemu所在位置，cmd命令行，执行以下命令：
+
+```
+ qemu-system-aarch64.exe -m 4096 -cpu cortex-a72 -smp 8,sockets=4,cores=2 -M virt -bios D:\Kylin\QEMU_EFI.fd -device VGA -device nec-usb-xhci -device usb-mouse -device usb-kbd -drive if=none,file=D:\Kylin\kylindisk.qcow2,id=hd0 -device virtio-blk-device,drive=hd0 -drive if=none,file=,id=cdrom,media=cdrom -device virtio-scsi-device -device scsi-cd,drive=cdrom -net nic -net user,hostfwd=tcp::2222-:22
+```
+
+不用再指定iso文件。
+
+![image-20231019134912156](Linux配置.assets/image-20231019134912156.png)
+
+#### 4.主机与虚拟机传送文件
+
+当想要主机文件拷贝到虚拟机时，可以利用MobaXterm，其中
+Remote Host :127.0.0.1
+Specify username :（为虚拟机设定的用户名）
+Port :2222
+
+#### 总结
+
+在安装银河麒麟高级服务器操作系统V10时，运行程序会提示缺少libpng12.so.0，此时需要下载编译装库。
+下载解压libpng-1.2.59.tar.gz
+然后编译：
+
+```
+BUILD_LIBS=${HOME}/build_libs
+./autogen.sh
+./configure --prefix=${BUILD_LIBS}
+make
+make install
+```
+
+在编译得到的/home/build_libs的文件夹中，建立软连接，输入命令：
+
+```
+sudo ln -s /home/ucas/build_libs/lib/libpng12.so.0.59.0 /usr/lib/libpng12.so.0
+```
+
+
 
 
 # 问题
