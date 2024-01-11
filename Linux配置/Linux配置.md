@@ -26,7 +26,7 @@ git config --global user.email "1079903036@qq.com"			设置邮箱
 
 git config --global --list																  查看配置信息
 
-ssh-keygen -t rsa -C "1079903036@qq.com							 生成SSH秘钥
+ssh-keygen -t rsa -C "1079903036@qq.com"							 生成SSH秘钥
 
 cd ~/.ssh																						  进入到ssh目录
 
