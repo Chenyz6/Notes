@@ -58,6 +58,18 @@ git reset --hard
 
 
 
+### Git 22端口号冲突
+
+cd ~/.ssh
+
+vim config
+
+```
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+```
+
 
 
 
