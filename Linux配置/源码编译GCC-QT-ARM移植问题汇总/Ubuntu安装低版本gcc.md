@@ -8,7 +8,7 @@ https://blog.csdn.net/weixin_46584887/article/details/122527982
 
 2）创建存储目录 任意路径（用来保存编译安装后的路径）  例如   /gcc7.3.0
 
-3）解压源码    tar -zxf gcc-7.3.0.tar.gz
+3）解压源码    tar -zxvf gcc-7.3.0.tar.gz
 
 4）下载编译相关依赖        ./contrib/download_prerequisites
 
@@ -19,10 +19,6 @@ https://blog.csdn.net/weixin_46584887/article/details/122527982
 6）sudo make
 
 7）sudo make install
-
-
-
-
 
 
 
