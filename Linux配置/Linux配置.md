@@ -87,6 +87,9 @@ sudo install lazygit /usr/local/bin
 
 
 
+## 安装HTML5播放器
+
+sudo apt install ubuntu-restricted-extras 
 
 
 
